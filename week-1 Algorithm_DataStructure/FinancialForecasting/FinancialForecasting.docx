@@ -1,0 +1,28 @@
+//Understaning Recursive Algorithms
+Recursive Algorithms
+
+- Recursion is a process where a function calls itself.
+- Suitable for problems that can be broken down into smaller sub-problems.
+- Requires a base condition to stop recursion.
+- Can lead to performance issues if not optimized (e.g., deep recursion without memoization).
+
+  //Analysis
+  Financial Forecasting - Analysis
+
+Problem:
+- Predict future value based on current principal and annual growth rate using recursion.
+
+Recursive Function:
+- Calculates compound growth recursively:
+  FV = Principal × (1 + rate)^years
+
+Time Complexity:
+- O(n), where n is the number of years.
+- Each recursive call reduces years by 1 until base case (0) is reached.
+
+Optimization:
+- For large values of years, iterative or memoized approaches are more efficient.
+- This version is fine for smaller forecasting intervals (e.g., < 100 years).
+
+Conclusion:
+- Recursion provides a clean and simple implementation for repetitive computations like growth-based forecasting.
