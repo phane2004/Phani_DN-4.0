@@ -1,0 +1,33 @@
+//UnderStanding Search Algorithms
+Search Algorithm Basics
+
+1. Linear Search:
+   - Scans each item in sequence.
+   - No need for sorting.
+   - Time Complexity: O(n)
+
+2. Binary Search:
+   - Requires sorted data.
+   - Uses divide-and-conquer strategy.
+   - Time Complexity: O(log n)
+
+When to Use:
+- Linear Search: Small or unsorted data.
+- Binary Search: Large, sorted data for faster lookup.
+// Analysis
+  Library Management System - Analysis
+
+Search Algorithms Implemented:
+1. Linear Search:
+   - Time Complexity: O(n)
+   - No sorting needed
+   - Simpler, less efficient for large datasets
+
+2. Binary Search:
+   - Time Complexity: O(log n)
+   - Requires sorted array
+   - Faster for large datasets
+
+Conclusion:
+- Binary search is preferred when working with sorted books and larger libraries.
+- Linear search is acceptable for smaller or frequently updated book lists.
