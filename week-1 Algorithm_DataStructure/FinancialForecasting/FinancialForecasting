@@ -1,0 +1,20 @@
+// File: Main.java | Financial Forecasting with Recursion
+class FinancialForecast {
+
+    // Recursive method to calculate future value
+    public static double calculateFutureValue(double principal, double growthRate, int years) {
+        if (years == 0) return principal;
+        return calculateFutureValue(principal * (1 + growthRate), growthRate, years - 1);
+    }
+
+    public static void main(String[] args) {
+        double principal = 10000;
+        double growthRate = 0.08; // 8% annual growth
+        int years = 5;
+
+        double futureValue = calculateFutureValue(principal, growthRate, years);
+        System.out.printf("Predicted value after %d years: ₹%.2f\n", years, futureValue);
+    }
+}
+//output
+Predicted value after 5 years: ₹14693.28
