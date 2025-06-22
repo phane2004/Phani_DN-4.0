@@ -1,0 +1,96 @@
+
+//ou// File: Main.java | Inventory Management using HashMap
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class Product {
+    String productId;
+    String productName;
+    int quantity;
+    double price;
+
+    public Product(String productId, String productName, int quantity, double price) {
+        this.productId = productId;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public String toString() {
+        return productId + " | " + productName + " | Qty: " + quantity + " | Price: ₹" + price;
+    }
+}
+
+class Inventory {
+    private Map<String, Product> products = new HashMap<>();
+
+    public void addProduct(Product product) {
+        products.put(product.productId, product);
+    }
+
+    public void updateProduct(String productId, int newQuantity, double newPrice) {
+        Product p = products.get(productId);
+        if (p != null) {
+            p.quantity = newQuantity;
+            p.price = newPrice;
+        }
+    }
+
+    public void deleteProduct(String productId) {
+        products.remove(productId);
+    }
+
+    public void displayAll() {
+        if (products.isEmpty()) {
+            System.out.println("Inventory is empty.");
+        } else {
+            for (Product p : products.values()) {
+                System.out.println(p);
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Inventory inventory = new Inventory();
+
+        inventory.addProduct(new Product("P001", "Laptop", 10, 50000));
+        inventory.addProduct(new Product("P002", "Mouse", 50, 500));
+        inventory.addProduct(new Product("P003", "Keyboard", 30, 1200));
+
+        System.out.println("Initial Inventory:");
+        inventory.displayAll();
+
+        System.out.println("\nUpdating Product P002...");
+        inventory.updateProduct("P002", 45, 550);
+
+        System.out.println("\nInventory after update:");
+        inventory.displayAll();
+
+        System.out.println("\nDeleting Product P001...");
+        inventory.deleteProduct("P001");
+
+        System.out.println("\nFinal Inventory:");
+        inventory.displayAll();
+    }
+}
+tput
+Initial Inventory:
+P001 | Laptop | Qty: 10 | Price: ₹50000.0
+P002 | Mouse | Qty: 50 | Price: ₹500.0
+P003 | Keyboard | Qty: 30 | Price: ₹1200.0
+
+Updating Product P002...
+
+Inventory after update:
+P001 | Laptop | Qty: 10 | Price: ₹50000.0
+P002 | Mouse | Qty: 45 | Price: ₹550.0
+P003 | Keyboard | Qty: 30 | Price: ₹1200.0
+
+Deleting Product P001...
+
+Final Inventory:
+P002 | Mouse | Qty: 45 | Price: ₹550.0
+P003 | Keyboard | Qty: 30 | Price: ₹1200.0
