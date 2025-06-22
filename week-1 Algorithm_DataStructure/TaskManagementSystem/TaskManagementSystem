@@ -1,0 +1,116 @@
+// File: Main.java | Task Management using Singly Linked List
+class Task {
+    int taskId;
+    String taskName;
+    String status;
+
+    public Task(int taskId, String taskName, String status) {
+        this.taskId = taskId;
+        this.taskName = taskName;
+        this.status = status;
+    }
+
+    public String toString() {
+        return taskId + " | " + taskName + " | " + status;
+    }
+}
+
+class Node {
+    Task task;
+    Node next;
+
+    public Node(Task task) {
+        this.task = task;
+        this.next = null;
+    }
+}
+
+class TaskManager {
+    Node head = null;
+
+    public void addTask(Task task) {
+        Node newNode = new Node(task);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node curr = head;
+            while (curr.next != null) curr = curr.next;
+            curr.next = newNode;
+        }
+    }
+
+    public void deleteTask(int taskId) {
+        if (head == null) return;
+        if (head.task.taskId == taskId) {
+            head = head.next;
+            return;
+        }
+        Node prev = head;
+        Node curr = head.next;
+        while (curr != null) {
+            if (curr.task.taskId == taskId) {
+                prev.next = curr.next;
+                return;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
+    }
+
+    public Task searchTask(int taskId) {
+        Node curr = head;
+        while (curr != null) {
+            if (curr.task.taskId == taskId) return curr.task;
+            curr = curr.next;
+        }
+        return null;
+    }
+
+    public void traverseTasks() {
+        if (head == null) {
+            System.out.println("No tasks found.");
+            return;
+        }
+        Node curr = head;
+        while (curr != null) {
+            System.out.println(curr.task);
+            curr = curr.next;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        TaskManager manager = new TaskManager();
+
+        manager.addTask(new Task(1, "Design UI", "Pending"));
+        manager.addTask(new Task(2, "Build Backend", "In Progress"));
+        manager.addTask(new Task(3, "Write Tests", "Pending"));
+
+        System.out.println("All Tasks:");
+        manager.traverseTasks();
+
+        System.out.println("\nSearching for Task 2:");
+        System.out.println(manager.searchTask(2));
+
+        System.out.println("\nDeleting Task 1...");
+        manager.deleteTask(1);
+
+        System.out.println("\nFinal Task List:");
+        manager.traverseTasks();
+    }
+}
+//output
+All Tasks:
+1 | Design UI | Pending
+2 | Build Backend | In Progress
+3 | Write Tests | Pending
+
+Searching for Task 2:
+2 | Build Backend | In Progress
+
+Deleting Task 1...
+
+Final Task List:
+2 | Build Backend | In Progress
+3 | Write Tests | Pending
