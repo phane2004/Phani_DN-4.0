@@ -1,0 +1,85 @@
+// Computer.java (Product with static Builder class)
+class Computer {
+    // Required components
+    private String CPU;
+    private String RAM;
+
+    // Optional components
+    private String storage;
+    private String graphicsCard;
+
+    // Private constructor
+    private Computer(Builder builder) {
+        this.CPU = builder.CPU;
+        this.RAM = builder.RAM;
+        this.storage = builder.storage;
+        this.graphicsCard = builder.graphicsCard;
+    }
+
+    // Display configuration
+    public void showConfig() {
+        System.out.println("Computer Configuration:");
+        System.out.println("CPU          : " + CPU);
+        System.out.println("RAM          : " + RAM);
+        System.out.println("Storage      : " + (storage != null ? storage : "Not included"));
+        System.out.println("Graphics Card: " + (graphicsCard != null ? graphicsCard : "Not included"));
+    }
+
+    // Static nested Builder class
+    public static class Builder {
+        private String CPU;
+        private String RAM;
+        private String storage;
+        private String graphicsCard;
+
+        public Builder(String CPU, String RAM) {
+            this.CPU = CPU;
+            this.RAM = RAM;
+        }
+
+        public Builder setStorage(String storage) {
+            this.storage = storage;
+            return this;
+        }
+
+        public Builder setGraphicsCard(String graphicsCard) {
+            this.graphicsCard = graphicsCard;
+            return this;
+        }
+
+        public Computer build() {
+            return new Computer(this);
+        }
+    }
+}
+
+// Main.java (Test class)
+public class Main {
+    public static void main(String[] args) {
+        // Basic computer
+        Computer basicPC = new Computer.Builder("Intel i3", "4GB").build();
+        basicPC.showConfig();
+
+        System.out.println();
+
+        // Gaming computer
+        Computer gamingPC = new Computer.Builder("Intel i9", "32GB")
+            .setStorage("1TB SSD")
+            .setGraphicsCard("NVIDIA RTX 4090")
+            .build();
+        gamingPC.showConfig();
+    }
+}
+// output
+Computer Configuration:
+CPU          : Intel i3
+RAM          : 4GB
+Storage      : Not included
+Graphics Card: Not included
+
+Computer Configuration:
+CPU          : Intel i9
+RAM          : 32GB
+Storage      : 1TB SSD
+Graphics Card: NVIDIA RTX 4090
+
