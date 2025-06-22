@@ -1,0 +1,35 @@
+// understanding Array Representation
+Array Representation in Memory
+
+- Arrays are stored in contiguous memory locations.
+- Fast access by index: O(1) for get/set operations.
+- Fixed size: cannot dynamically grow/shrink.
+- Efficient for predictable-sized datasets, but limited in flexibility.
+
+// Analysis
+Employee Management System - Analysis
+
+Data Structure Used:
+- Array of Employee objects with a fixed size (100).
+
+Operations and Time Complexity:
+1. Add Employee:
+   - Time Complexity: O(1)
+   - Appending at end using size counter.
+
+2. Search Employee:
+   - Time Complexity: O(n)
+   - Linear scan for matching employeeId.
+
+3. Delete Employee:
+   - Time Complexity: O(n)
+   - Find and shift elements to remove a gap.
+
+4. Traverse Employees:
+   - Time Complexity: O(n)
+   - Simple iteration.
+
+Limitations:
+- Fixed capacity (100) limits scalability.
+- Insertion and deletion are not optimized due to shifting.
+- Dynamic structures like ArrayList or LinkedList are better for larger or unpredictable data.
