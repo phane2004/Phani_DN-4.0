@@ -1,0 +1,37 @@
+// File: CustomerRepository.java | Interface
+interface CustomerRepository {
+    String findCustomerById(String id);
+}
+
+// File: CustomerRepositoryImpl.java | Concrete Repository
+class CustomerRepositoryImpl implements CustomerRepository {
+    public String findCustomerById(String id) {
+        return "Customer ID: " + id + ", Name: Rakesh";
+    }
+}
+
+// File: CustomerService.java | Service (depends on repository)
+class CustomerService {
+    private CustomerRepository repository;
+
+    public CustomerService(CustomerRepository repository) {
+        this.repository = repository;
+    }
+
+    public void showCustomer(String id) {
+        String customer = repository.findCustomerById(id);
+        System.out.println("Service Layer Output → " + customer);
+    }
+}
+
+// File: Main.java | Test class
+public class Main {
+    public static void main(String[] args) {
+        CustomerRepository repository = new CustomerRepositoryImpl();
+        CustomerService service = new CustomerService(repository);
+
+        service.showCustomer("CUST101");
+    }
+}
+//output
+Service Layer Output → Customer ID: CUST101, Name: Rakesh
