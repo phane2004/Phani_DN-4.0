@@ -1,0 +1,45 @@
+//understanding Linkedlist
+Linked List Overview
+
+1. Singly Linked List:
+   - Each node points to the next.
+   - Easy insertion and deletion at beginning.
+
+2. Doubly Linked List:
+   - Each node has references to both previous and next nodes.
+   - More flexible but uses more memory.
+
+Advantages Over Arrays:
+- Dynamic size (no predefined capacity).
+- Efficient insert/delete operations (especially at head/tail).
+- No shifting like in arrays.
+
+  // Analysis
+  Task Management System - Analysis
+
+Data Structure Used:
+- Singly Linked List for dynamic task storage.
+
+Operations and Time Complexity:
+1. Add Task:
+   - Time Complexity: O(n)
+   - Appends at the end.
+
+2. Search Task:
+   - Time Complexity: O(n)
+   - Traverses to find taskId.
+
+3. Delete Task:
+   - Time Complexity: O(n)
+   - Finds and removes matching node.
+
+4. Traverse Tasks:
+   - Time Complexity: O(n)
+
+Advantages:
+- Dynamic memory allocation (no predefined size).
+- Easier deletion compared to arrays (no shifting).
+
+Limitations:
+- No random access (unlike arrays).
+- Slightly more memory usage due to node pointers.
