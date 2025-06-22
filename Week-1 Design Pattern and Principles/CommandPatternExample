@@ -1,0 +1,79 @@
+// File: Command.java | Interface
+interface Command {
+    void execute();
+}
+
+// File: Light.java | Receiver
+class Light {
+    public void turnOn() {
+        System.out.println("The light is ON.");
+    }
+
+    public void turnOff() {
+        System.out.println("The light is OFF.");
+    }
+}
+
+// File: LightOnCommand.java | Concrete Command
+class LightOnCommand implements Command {
+    private Light light;
+
+    public LightOnCommand(Light light) {
+        this.light = light;
+    }
+
+    public void execute() {
+        light.turnOn();
+    }
+}
+
+// File: LightOffCommand.java | Concrete Command
+class LightOffCommand implements Command {
+    private Light light;
+
+    public LightOffCommand(Light light) {
+        this.light = light;
+    }
+
+    public void execute() {
+        light.turnOff();
+    }
+}
+
+// File: RemoteControl.java | Invoker
+class RemoteControl {
+    private Command command;
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+
+    public void pressButton() {
+        if (command != null) {
+            command.execute();
+        } else {
+            System.out.println("No command set.");
+        }
+    }
+}
+
+// File: Main.java | Test class
+public class Main {
+    public static void main(String[] args) {
+        Light livingRoomLight = new Light();
+
+        Command lightOn = new LightOnCommand(livingRoomLight);
+        Command lightOff = new LightOffCommand(livingRoomLight);
+
+        RemoteControl remote = new RemoteControl();
+
+        remote.setCommand(lightOn);
+        remote.pressButton();
+
+        remote.setCommand(lightOff);
+        remote.pressButton();
+    }
+}
+//output
+The light is ON.
+The light is OFF.
