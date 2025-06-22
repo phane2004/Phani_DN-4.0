@@ -1,0 +1,79 @@
+// File: Main.java | Library Management with Search
+import java.util.Arrays;
+
+class Book {
+    int bookId;
+    String title;
+    String author;
+
+    public Book(int bookId, String title, String author) {
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+    }
+
+    public String toString() {
+        return bookId + " | " + title + " | " + author;
+    }
+}
+
+public class Main {
+
+    public static void linearSearch(Book[] books, String title) {
+        for (Book b : books) {
+            if (b.title.equalsIgnoreCase(title)) {
+                System.out.println("Found (Linear Search): " + b);
+                return;
+            }
+        }
+        System.out.println("Book not found (Linear Search)");
+    }
+
+    public static void binarySearch(Book[] books, String title) {
+        Arrays.sort(books, (a, b) -> a.title.compareToIgnoreCase(b.title));
+        int low = 0, high = books.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int cmp = books[mid].title.compareToIgnoreCase(title);
+            if (cmp == 0) {
+                System.out.println("Found (Binary Search): " + books[mid]);
+                return;
+            } else if (cmp < 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        System.out.println("Book not found (Binary Search)");
+    }
+
+    public static void main(String[] args) {
+        Book[] books = {
+            new Book(1, "Algorithms", "CLRS"),
+            new Book(2, "Java Programming", "James Gosling"),
+            new Book(3, "Data Structures", "Seymour Lipschutz"),
+            new Book(4, "Artificial Intelligence", "Stuart Russell")
+        };
+
+        linearSearch(books, "Java Programming");
+        binarySearch(books, "Data Structures");
+        binarySearch(books, "Machine Learning");
+    }
+}
+//output
+Library Management System - Analysis
+
+Search Algorithms Implemented:
+1. Linear Search:
+   - Time Complexity: O(n)
+   - No sorting needed
+   - Simpler, less efficient for large datasets
+
+2. Binary Search:
+   - Time Complexity: O(log n)
+   - Requires sorted array
+   - Faster for large datasets
+
+Conclusion:
+- Binary search is preferred when working with sorted books and larger libraries.
+- Linear search is acceptable for smaller or frequently updated book lists.
