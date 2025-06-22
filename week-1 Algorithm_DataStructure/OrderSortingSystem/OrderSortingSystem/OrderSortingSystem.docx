@@ -1,0 +1,35 @@
+// understanding sorting algorithm
+Sorting Algorithms Overview
+
+1. Bubble Sort:
+   - Repeatedly steps through the list, compares adjacent items, and swaps them if they are in the wrong order.
+   - Time Complexity:
+     - Best: O(n)
+     - Average/Worst: O(n^2)
+   - Simple but inefficient for large datasets.
+
+2. Quick Sort:
+   - Divide-and-conquer algorithm that selects a pivot and partitions the array.
+   - Time Complexity:
+     - Best/Average: O(n log n)
+     - Worst: O(n^2) (rare, happens when pivot is poorly chosen)
+   - Efficient and widely used for large datasets.
+// Analysis
+Order Sorting - Algorithm Analysis
+
+Bubble Sort:
+- Time Complexity: O(n^2)
+- Best Case: O(n) when already sorted
+- Not efficient for large datasets
+- Easy to implement
+
+Quick Sort:
+- Time Complexity:
+  - Best/Average: O(n log n)
+  - Worst: O(n^2)
+- Fast and efficient in most practical cases
+- Uses divide-and-conquer technique
+
+Conclusion:
+- Quick Sort is generally preferred over Bubble Sort due to better average performance.
+- For real-time e-commerce platforms, Quick Sort or in-built sort methods are optimal.
