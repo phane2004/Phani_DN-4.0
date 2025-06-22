@@ -1,0 +1,69 @@
+// Notifier.java (Component Interface)
+interface Notifier {
+    void send(String message);
+}
+
+// EmailNotifier.java (Concrete Component)
+class EmailNotifier implements Notifier {
+    public void send(String message) {
+        System.out.println("Sending Email: " + message);
+    }
+}
+
+// NotifierDecorator.java (Base Decorator)
+abstract class NotifierDecorator implements Notifier {
+    protected Notifier notifier;
+
+    public NotifierDecorator(Notifier notifier) {
+        this.notifier = notifier;
+    }
+
+    public void send(String message) {
+        notifier.send(message);
+    }
+}
+
+// SMSNotifierDecorator.java
+class SMSNotifierDecorator extends NotifierDecorator {
+    public SMSNotifierDecorator(Notifier notifier) {
+        super(notifier);
+    }
+
+    public void send(String message) {
+        super.send(message);
+        System.out.println("Sending SMS: " + message);
+    }
+}
+
+// SlackNotifierDecorator.java
+class SlackNotifierDecorator extends NotifierDecorator {
+    public SlackNotifierDecorator(Notifier notifier) {
+        super(notifier);
+    }
+
+    public void send(String message) {
+        super.send(message);
+        System.out.println("Sending Slack Message: " + message);
+    }
+}
+
+// Main.java (Test Class)
+public class Main {
+    public static void main(String[] args) {
+        // Base notifier: Email only
+        Notifier basicNotifier = new EmailNotifier();
+
+        // Decorate with SMS
+        Notifier smsNotifier = new SMSNotifierDecorator(basicNotifier);
+
+        // Decorate with Slack
+        Notifier multiNotifier = new SlackNotifierDecorator(smsNotifier);
+
+        // Send notification
+        multiNotifier.send("Server down alert!");
+    }
+}
+// output
+Sending Email: Server down alert!
+Sending SMS: Server down alert!
+Sending Slack Message: Server down alert!
