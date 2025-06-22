@@ -1,0 +1,78 @@
+// File: Observer.java | Interface
+interface Observer {
+    void update(String stockName, double price);
+}
+
+// File: Stock.java | Subject Interface
+interface Stock {
+    void register(Observer o);
+    void deregister(Observer o);
+    void notifyObservers();
+}
+
+// File: StockMarket.java | Concrete Subject
+import java.util.ArrayList;
+import java.util.List;
+
+class StockMarket implements Stock {
+    private List<Observer> observers = new ArrayList<>();
+    private String stockName;
+    private double stockPrice;
+
+    public void setStock(String stockName, double stockPrice) {
+        this.stockName = stockName;
+        this.stockPrice = stockPrice;
+        notifyObservers();
+    }
+
+    public void register(Observer o) {
+        observers.add(o);
+    }
+
+    public void deregister(Observer o) {
+        observers.remove(o);
+    }
+
+    public void notifyObservers() {
+        for (Observer o : observers) {
+            o.update(stockName, stockPrice);
+        }
+    }
+}
+
+// File: MobileApp.java | Concrete Observer
+class MobileApp implements Observer {
+    public void update(String stockName, double price) {
+        System.out.println("MobileApp - " + stockName + " is now ₹" + price);
+    }
+}
+
+// File: WebApp.java | Concrete Observer
+class WebApp implements Observer {
+    public void update(String stockName, double price) {
+        System.out.println("WebApp - " + stockName + " is now ₹" + price);
+    }
+}
+
+// File: Main.java | Test class
+public class Main {
+    public static void main(String[] args) {
+        StockMarket stockMarket = new StockMarket();
+
+        Observer mobile = new MobileApp();
+        Observer web = new WebApp();
+
+        stockMarket.register(mobile);
+        stockMarket.register(web);
+
+        stockMarket.setStock("TCS", 3550.75);
+        System.out.println();
+        stockMarket.setStock("INFY", 1425.50);
+    }
+}
+//output
+MobileApp - TCS is now ₹3550.75
+WebApp - TCS is now ₹3550.75
+
+MobileApp - INFY is now ₹1425.5
+WebApp - INFY is now ₹1425.5
