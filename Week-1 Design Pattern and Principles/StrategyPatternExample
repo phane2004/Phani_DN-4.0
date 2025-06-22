@@ -1,0 +1,51 @@
+// File: PaymentStrategy.java | Interface
+interface PaymentStrategy {
+    void pay(double amount);
+}
+
+// File: CreditCardPayment.java | Concrete Strategy
+class CreditCardPayment implements PaymentStrategy {
+    public void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using Credit Card.");
+    }
+}
+
+// File: PayPalPayment.java | Concrete Strategy
+class PayPalPayment implements PaymentStrategy {
+    public void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using PayPal.");
+    }
+}
+
+// File: PaymentContext.java | Context
+class PaymentContext {
+    private PaymentStrategy strategy;
+
+    public void setPaymentStrategy(PaymentStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void makePayment(double amount) {
+        if (strategy != null) {
+            strategy.pay(amount);
+        } else {
+            System.out.println("No payment method selected.");
+        }
+    }
+}
+
+// File: Main.java | Test class
+public class Main {
+    public static void main(String[] args) {
+        PaymentContext context = new PaymentContext();
+
+        context.setPaymentStrategy(new CreditCardPayment());
+        context.makePayment(1200);
+
+        context.setPaymentStrategy(new PayPalPayment());
+        context.makePayment(2500);
+    }
+}
+//output
+Paid ₹1200.0 using Credit Card.
+Paid ₹2500.0 using PayPal.
