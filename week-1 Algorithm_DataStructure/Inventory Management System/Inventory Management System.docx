@@ -1,0 +1,43 @@
+//Understand the Problem
+Why data structures and algorithms are essential:
+
+They allow efficient storage, retrieval, and modification of product data.
+
+In large inventories, operations like searching, updating stock, or deleting items should be optimized for performance.
+
+Suitable Data Structures:
+
+HashMap: For fast lookup, insertion, and deletion using productId as the key.
+
+ArrayList: If you need ordered traversal or sorting, but search and delete are slower.
+  // Analysis
+  Inventory Management System - Analysis
+
+Data Structure Used:
+- HashMap<String, Product> for storing products using productId as key.
+
+Operations and Time Complexity:
+1. Add Product:
+   - Time Complexity: O(1)
+   - Just inserts into the HashMap.
+
+2. Update Product:
+   - Time Complexity: O(1)
+   - Accesses and modifies the object directly via key.
+
+3. Delete Product:
+   - Time Complexity: O(1)
+   - Removes entry from the HashMap using key.
+
+4. Display All Products:
+   - Time Complexity: O(n)
+   - Iterates over all entries in the map.
+
+Why HashMap?
+- Provides constant-time performance for most operations.
+- Ensures unique product entries via productId.
+- Ideal for large datasets where fast access is required.
+
+Limitations and Optimizations:
+- HashMap does not maintain order; use TreeMap if sorted order is needed.
+- Searching by name or other fields would require additional indexing or looping.
