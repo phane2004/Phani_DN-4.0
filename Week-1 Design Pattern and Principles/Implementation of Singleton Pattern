@@ -1,0 +1,37 @@
+// Logger.java
+public class Logger {
+    private static Logger instance;
+
+    private Logger() {
+        System.out.println("Logger instance created.");
+    }
+
+    public static Logger getInstance() {
+        if (instance == null) {
+            instance = new Logger();
+        }
+        return instance;
+    }
+
+    public void log(String message) {
+        System.out.println("LOG: " + message);
+    }
+}
+
+// Main.java
+public class Main {
+    public static void main(String[] args) {
+        Image img1 = new ProxyImage("college_building.jpg");
+
+        System.out.println("First time display:");
+        img1.display(); // loads and displays
+
+        System.out.println("\nSecond time display:");
+        img1.display(); // uses cached version
+    }
+}
+## output
+Logger instance created.
+LOG: First log message
+LOG: Second log message
+Both logger instances are the same.
