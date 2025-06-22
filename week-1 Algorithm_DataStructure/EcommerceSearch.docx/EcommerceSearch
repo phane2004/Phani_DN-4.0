@@ -28,6 +28,86 @@ Search Time Complexities:
 Use in E-commerce:
 - Binary Search is preferable for large, sorted product databases.
 - Linear Search is simple but not scalable for large datasets.
+
+// File: Main.java | E-commerce Search Example
+import java.util.Arrays;
+
+class Product {
+    String productId;
+    String productName;
+    String category;
+
+    public Product(String productId, String productName, String category) {
+        this.productId = productId;
+        this.productName = productName;
+        this.category = category;
+    }
+
+    public String toString() {
+        return productId + " | " + productName + " | " + category;
+    }
+}
+
+public class Main {
+    public static void linearSearch(Product[] products, String name) {
+        boolean found = false;
+        for (Product p : products) {
+            if (p.productName.equalsIgnoreCase(name)) {
+                System.out.println("Found: " + p);
+                found = true;
+                break;
+            }
+        }
+        if (!found) System.out.println("Product not found (Linear Search)");
+    }
+
+    public static void binarySearch(Product[] products, String name) {
+        Arrays.sort(products, (a, b) -> a.productName.compareToIgnoreCase(b.productName));
+        int low = 0, high = products.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int cmp = products[mid].productName.compareToIgnoreCase(name);
+            if (cmp == 0) {
+                System.out.println("Found: " + products[mid]);
+                return;
+            } else if (cmp < 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        System.out.println("Product not found (Binary Search)");
+    }
+
+    public static void main(String[] args) {
+        Product[] products = {
+            new Product("P101", "Laptop", "Electronics"),
+            new Product("P102", "Shoes", "Fashion"),
+            new Product("P103", "Mobile", "Electronics"),
+            new Product("P104", "Bag", "Accessories")
+        };
+
+        System.out.println("Linear Search for 'Mobile':");
+        linearSearch(products, "Mobile");
+
+        System.out.println("\nBinary Search for 'Shoes':");
+        binarySearch(products, "Shoes");
+
+        System.out.println("\nBinary Search for 'Watch':");
+        binarySearch(products, "Watch");
+    }
+}
+//output
+
+Linear Search for 'Mobile':
+Found: P103 | Mobile | Electronics
+
+Binary Search for 'Shoes':
+Found: P102 | Shoes | Fashion
+
+Binary Search for 'Watch':
+Product not found (Binary Search)
+
 //E-commerce Platform Search Function - Analysis
 
 Search Algorithms Implemented:
