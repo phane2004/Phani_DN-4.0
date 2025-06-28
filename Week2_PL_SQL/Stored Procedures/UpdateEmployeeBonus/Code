@@ -1,0 +1,27 @@
+CREATE OR REPLACE PROCEDURE UpdateEmployeeBonus(
+  p_dept IN VARCHAR2,
+  p_bonus_percent IN NUMBER
+) IS
+BEGIN
+  UPDATE employees
+  SET salary = salary + (salary * p_bonus_percent / 100)
+  WHERE dept = p_dept;
+
+  COMMIT;
+END;
+/
+-- Step 3 & 4: Execute and display updated employees
+BEGIN
+  -- Apply 10% bonus to HR department
+  UpdateEmployeeBonus('HR', 10);
+
+  -- Output updated employee data
+  DBMS_OUTPUT.PUT_LINE('EMP_ID | EMP_NAME | DEPT    | SALARY');
+  FOR emp IN (SELECT * FROM employees ORDER BY emp_id) LOOP
+    DBMS_OUTPUT.PUT_LINE(emp.emp_id || '      | ' ||
+                         RPAD(emp.emp_name, 8) || '| ' ||
+                         RPAD(emp.dept, 7) || '| ' ||
+                         TO_CHAR(emp.salary, '999999.99'));
+  END LOOP;
+END;
+/
