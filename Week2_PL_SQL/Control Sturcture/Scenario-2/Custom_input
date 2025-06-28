@@ -1,0 +1,14 @@
+-- Input
+CREATE TABLE customers (
+    customer_id     NUMBER PRIMARY KEY,
+    customer_name   VARCHAR2(50),
+    age             NUMBER,
+    interest_rate   NUMBER(5,2),
+    balance         NUMBER(10,2),
+    isvip           VARCHAR2(5)
+);
+INSERT INTO customers VALUES (1, 'John Doe', 65, 7.5, 12000, 'FALSE');
+INSERT INTO customers VALUES (2, 'Jane Smith', 45, 8.0, 9000, 'FALSE');
+INSERT INTO customers VALUES (3, 'Alice Johnson', 70, 6.5, 11000, 'FALSE');
+INSERT INTO customers VALUES (4, 'Mike Brown', 59, 7.8, 8000, 'FALSE');
+INSERT INTO customers VALUES (5, 'Sara Davis', 61, 8.2, 15000, 'FALSE');
