@@ -1,0 +1,45 @@
+--Create the stored procedure
+CREATE OR REPLACE PROCEDURE TransferFunds(
+  p_from_account IN NUMBER,
+  p_to_account   IN NUMBER,
+  p_amount       IN NUMBER
+) IS
+  v_balance NUMBER;
+BEGIN
+  -- Get balance of source account
+  SELECT balance INTO v_balance
+  FROM accounts
+  WHERE account_id = p_from_account;
+
+  -- Check sufficient funds
+  IF v_balance < p_amount THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Insufficient balance in source account');
+  END IF;
+
+  -- Deduct from source
+  UPDATE accounts
+  SET balance = balance - p_amount
+  WHERE account_id = p_from_account;
+
+  -- Add to destination
+  UPDATE accounts
+  SET balance = balance + p_amount
+  WHERE account_id = p_to_account;
+
+  COMMIT;
+END;
+/
+-- Step 3 & 4: Execute transfer and display updated table
+BEGIN
+  -- Transfer ₹4000 from 201 to 202
+  TransferFunds(201, 202, 4000);
+
+  -- Show updated balances
+  DBMS_OUTPUT.PUT_LINE('ACCOUNT_ID | CUSTOMER_ID | BALANCE');
+  FOR acc IN (SELECT * FROM accounts ORDER BY account_id) LOOP
+    DBMS_OUTPUT.PUT_LINE(acc.account_id || '         | ' ||
+                         acc.customer_id || '           | ' ||
+                         TO_CHAR(acc.balance, '999999.99'));
+  END LOOP;
+END;
+/
