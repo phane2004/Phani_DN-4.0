@@ -1,0 +1,26 @@
+-- Scenario 2: Set IsVIP = TRUE where balance > 10000
+BEGIN
+  FOR rec IN (
+    SELECT customer_id
+    FROM customers
+    WHERE balance > 10000
+  ) LOOP
+    UPDATE customers
+    SET isvip = 'TRUE'
+    WHERE customer_id = rec.customer_id;
+  END LOOP;
+
+  COMMIT;
+
+  DBMS_OUTPUT.PUT_LINE('VIP status updated for customers with balance > 10000.');
+
+  FOR rec IN (
+    SELECT customer_id, customer_name, balance, isvip
+    FROM customers
+    WHERE isvip = 'TRUE'
+  ) LOOP
+    DBMS_OUTPUT.PUT_LINE('ID: ' || rec.customer_id || ', Name: ' || rec.customer_name ||
+                         ', Balance: ' || rec.balance || ', VIP: ' || rec.isvip);
+  END LOOP;
+END;
+/
