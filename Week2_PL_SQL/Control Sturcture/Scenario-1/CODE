@@ -4,7 +4,6 @@ DECLARE
     SELECT customer_id
     FROM customers
     WHERE age > 60;
-
 BEGIN
   FOR rec IN c_customers LOOP
     UPDATE customers
@@ -13,6 +12,13 @@ BEGIN
   END LOOP;
 
   COMMIT;
-  DBMS_OUTPUT.PUT_LINE('Discount applied to senior customers.');
+
+  DBMS_OUTPUT.PUT_LINE('Discount applied to senior customers:');
+  FOR rec IN (SELECT customer_id, customer_name, age, interest_rate 
+              FROM customers WHERE age > 60) LOOP
+    DBMS_OUTPUT.PUT_LINE('ID: ' || rec.customer_id || ', Name: ' || rec.customer_name ||
+                         ', Age: ' || rec.age || ', New Interest Rate: ' || rec.interest_rate);
+  END LOOP;
 END;
 /
+
