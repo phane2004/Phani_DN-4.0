@@ -1,0 +1,22 @@
+-- Create Procedure
+CREATE OR REPLACE PROCEDURE ProcessMonthlyInterest IS
+BEGIN
+  UPDATE savings_accounts
+  SET balance = balance * 1.01;
+  COMMIT;
+END;
+/
+-- Execute Procedure and Show Updated Data
+BEGIN
+  -- Call procedure
+  ProcessMonthlyInterest;
+
+  -- Show updated savings_accounts table
+  DBMS_OUTPUT.PUT_LINE('ACCOUNT_ID | CUSTOMER_ID | BALANCE');
+  FOR rec IN (SELECT * FROM savings_accounts ORDER BY account_id) LOOP
+    DBMS_OUTPUT.PUT_LINE(rec.account_id || '         | ' ||
+                         rec.customer_id || '           | ' ||
+                         TO_CHAR(rec.balance, '999999.99'));
+  END LOOP;
+END;
+/
