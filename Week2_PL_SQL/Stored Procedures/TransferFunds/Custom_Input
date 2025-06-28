@@ -1,0 +1,12 @@
+CREATE TABLE accounts (
+  account_id   NUMBER PRIMARY KEY,
+  customer_id  NUMBER,
+  balance      NUMBER(10,2)
+);
+
+INSERT INTO accounts VALUES (201, 1, 5000);
+INSERT INTO accounts VALUES (202, 2, 8000);
+INSERT INTO accounts VALUES (203, 3, 15000);
+INSERT INTO accounts VALUES (204, 4, 12000);
+INSERT INTO accounts VALUES (205, 5, 18000);
+COMMIT;
