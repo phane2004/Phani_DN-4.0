@@ -1,0 +1,50 @@
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+cd /c/Users/Phanindra/OneDrive/Desktop/GitDemo
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git checkout main
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git pull origin main
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git checkout -b GitWork
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+echo "<greeting>Hello from GitWork branch</greeting>" > hello.xml
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git add hello.xml
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git commit -m "Add hello.xml in GitWork"
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git push -u origin GitWork
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git checkout main
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+echo "<greeting>Hello from main branch</greeting>" > hello.xml
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git add hello.xml
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git commit -m "Add hello.xml in main"
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git push origin main
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main|MERGING)
+$ git add hello.xml
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main|MERGING)
+$ git commit -m "Resolve merge conflict in hello.xml"
+[main cd5937b] Resolve merge conflict in hello.xml
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ git push origin main
+
+git merge GitWork
