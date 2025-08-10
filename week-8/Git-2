@@ -1,0 +1,58 @@
+Phanindra@PHANI MINGW64 ~
+$ git config --global user.name "phane2004"
+
+Phanindra@PHANI MINGW64 ~
+$ git config --global user.email "dereddyphane@gmail.com"
+
+Phanindra@PHANI MINGW64 ~
+$ cd /c/Users/Phanindra/Desktop
+bash: cd: /c/Users/Phanindra/Desktop: No such file or directory
+
+Phanindra@PHANI MINGW64 ~
+$ cd /c/Users/Phanindra/OneDrive/Desktop
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop
+$ mkdir GitDemo
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop
+$ cd GitDemo
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+$ git init
+Initialized empty Git repository in C:/Users/Phanindra/OneDrive/Desktop/GitDemo/.git/
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ echo "This is a log file" > debug.log
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ mkdir -p log
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ echo "Log folder file" > log/info.txt
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ echo "*.log" > .gitignore
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ echo "log/" >> .gitignore
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ git add .gitignore
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ git commit -m "Add .gitignore to ignore .log files and log folder"
+[main 6bc6ab0] Add .gitignore to ignore .log files and log folder
+ 1 file changed, 2 insertions(+)
+ create mode 100644 .gitignore
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 312 bytes | 312.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/phane2004/GitDemo.git
+   4afb4b2..6bc6ab0  main -> main
+
