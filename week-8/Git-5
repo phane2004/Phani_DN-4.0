@@ -1,0 +1,23 @@
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git status
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git add .
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git commit -m "Saving pending work before push"
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git branch -a
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git checkout main
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git pull origin main
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git push origin main
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+git push origin GitWork
