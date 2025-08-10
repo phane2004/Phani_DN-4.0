@@ -1,0 +1,43 @@
+Phanindra@PHANI MINGW64 ~
+$ git config --global user.name "phane2004"
+
+Phanindra@PHANI MINGW64 ~
+$ git config --global user.email "dereddyphane@gmail.com"
+
+Phanindra@PHANI MINGW64 ~
+$ cd /c/Users/Phanindra/Desktop
+bash: cd: /c/Users/Phanindra/Desktop: No such file or directory
+
+Phanindra@PHANI MINGW64 ~
+$ cd /c/Users/Phanindra/OneDrive/Desktop
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop
+$ mkdir GitDemo
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop
+$ cd GitDemo
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo
+$ git init
+Initialized empty Git repository in C:/Users/Phanindra/OneDrive/Desktop/GitDemo/.git/
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (master)
+$ echo "Welcome to Git Demo" > welcome.txt
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (master)
+$ git add welcome.txt
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ git remote add origin https://github.com/phane2004/GitDemo.git
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ git branch -M main
+
+Phanindra@PHANI MINGW64 ~/OneDrive/Desktop/GitDemo (main)
+$ git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 239 bytes | 239.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/phane2004/GitDemo.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
